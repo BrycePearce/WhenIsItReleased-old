@@ -24,17 +24,22 @@ class App extends React.Component {
     searchResults() {
         console.log("you hit searchResults, your query = " + this.textInput.value);
         var input = this.textInput.value;
-        var posterQuery = 'http://api.themoviedb.org/3/search/movie?query=';
+        //don't query the first few characters (api limits to 40 characters per 10sec)
+        if (input.length > 2) {
+            var posterQuery = 'http://api.themoviedb.org/3/search/movie?query=';
 
-        //do our api call for the list of results
-        fetch(posterQuery + input + `&api_key=${Key}`)
-            .then((response) => {
-                response.json().then((json) => {
-                    //set the state variable 'myList' to the 'results' array of our data
-                    //when React sees the state change it will call 'render()' again and redraw things that need to be changed based on the new data
-                    this.setState({ myList: json.results })
+            //do our api call for the list of results
+            fetch(posterQuery + input + `&api_key=${Key}`)
+                .then((response) => {
+                    response.json().then((json) => {
+                        //set the state variable 'myList' to the 'results' array of our data
+                        //when React sees the state change it will call 'render()' again and redraw things that need to be changed based on the new data
+                        this.setState({ myList: json.results })
+                    });
                 });
-            });
+        }  if (this.textInput.value == '') {
+            this.state.myList  = '';
+        }
     }
 
     render() {
@@ -42,11 +47,8 @@ class App extends React.Component {
             <div>
                 <input
                     type="text"
-                    ref={(input) => { this.textInput = input; } } />
-                <input
-                    type="button"
-                    value="enter"
-                    onClick={this.searchResults.bind(this)} />
+                    ref={(input) => { this.textInput = input; } }
+                    onChange={this.searchResults.bind(this)} /> {/*query results onChange in input*/}
 
                 <h1>Possible Results</h1>
                 {/*can call functions between brackets if needed*/}
