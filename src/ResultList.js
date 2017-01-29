@@ -1,13 +1,7 @@
 import React from 'react';
 import Key from './Key';
-
-/*
-so say you wanted to pass a list of stuff to your ResultsList component. you could do 
-
-<ResultList myList={myListVar} />
-
-and inside the ResultList component you can access that by doing 'this.props.myList'
-*/
+import moment from 'moment';
+import fillerImage from './static/notfound.png';
 class ResultList extends React.Component {
 
     //handle clicked "li" events
@@ -16,10 +10,13 @@ class ResultList extends React.Component {
         fetch('http://api.themoviedb.org/3/movie/' + item.id + "/release_dates?api_key=" + Key)
             .then(function (response) {
                 response.json().then(function (json) {
-                    document.getElementById("date").innerText = json.results[0].release_dates[0].release_date;
+                    let date = moment(json.results[0].release_dates[0].release_date).format('MMMM Do YYYY, h:mm:ss a');
+                    document.getElementById("date").innerText = date;
                 });
             });
-        document.body.style.backgroundImage = "url('https://image.tmdb.org/t/p/original" + item.backdrop_path + "')";
+        if (item.backdrop_path != null) {
+            document.body.style.backgroundImage = "url('https://image.tmdb.org/t/p/w1920" + item.backdrop_path + "')";
+        } else console.log("backdrop not found"); //TODO: set this to default background later
     }
 
     render() {
@@ -28,7 +25,9 @@ class ResultList extends React.Component {
         let allTheListItems = this.props.list.map((item) => {
             // curly braces { } tell react to get the value of the javascript inside of it
             // so we are putting the value of 'item' inside <li> tags
-            return <li onClick={this.handleItem.bind(this, item)}>{item.title}</li>;
+            let poster = "https://image.tmdb.org/t/p/w92/" + item.poster_path;
+            if(poster == "https://image.tmdb.org/t/p/w92/null" ) {poster = fillerImage};
+            return <li onClick={this.handleItem.bind(this, item)}><img className="posters" src={poster} /> <div className = "title">{item.title} </div> </li>;
         });
 
         return (

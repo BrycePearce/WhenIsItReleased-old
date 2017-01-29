@@ -48,7 +48,7 @@ class App extends React.Component {
         return (
             <div id="container">
                 <h1>Pick a movie any movie</h1>
-                <div id="movie-search">
+                <div id="movie-searchBox">
                     <input
                         type="text"
                         placeholder="Enter a movie"
@@ -57,7 +57,7 @@ class App extends React.Component {
                 </div>
                 <img id="poster" />
                 <div id="date" />
-               <div className="result-list"> <ResultList list={this.state.myList} /> </div>
+                <div className="result-list"> <ResultList list={this.state.myList} /> </div>
             </div>
         )
     }
