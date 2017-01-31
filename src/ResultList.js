@@ -3,7 +3,7 @@ import Key from './Key';
 import moment from 'moment';
 import fillerImage from './static/notfound.png';
 class ResultList extends React.Component {
-        constructor(props) {
+    constructor(props) {
         super(props) //not sure if need this 
         this.state = {
             //initialize (it is initialized to an empty array because things that depend on this.state.myList expect it to be an array)
@@ -15,8 +15,8 @@ class ResultList extends React.Component {
     handleItem(item) {
         //dvd query
         fetch('http://api.themoviedb.org/3/movie/' + item.id + "/release_dates?api_key=" + Key)
-            .then(function (response) {
-                response.json().then(function (json) {
+            .then((response) => {
+                response.json().then((json) => {
                     let date = moment(json.results[0].release_dates[0].release_date).format('MMMM Do YYYY, h:mm:ss a');
                     document.getElementById("date").innerText = date;
                     console.log(json.results[0]);
@@ -30,7 +30,7 @@ class ResultList extends React.Component {
 
     render() {
         console.log(this.state.clickedInformation);
-        
+
         //map: we are mapping each item in the array to a html list item '<li>' so when the '.map()' is done running
         //'allTheListItems' will be an array of <li>'s
         let allTheListItems = this.props.list.map((item) => {
