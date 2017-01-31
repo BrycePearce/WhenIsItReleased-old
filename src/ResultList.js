@@ -3,6 +3,14 @@ import Key from './Key';
 import moment from 'moment';
 import fillerImage from './static/notfound.png';
 class ResultList extends React.Component {
+        constructor(props) {
+        super(props) //not sure if need this 
+        this.state = {
+            //initialize (it is initialized to an empty array because things that depend on this.state.myList expect it to be an array)
+            clickedInformation: []
+        }
+    }
+
     //handle clicked "li" events
     handleItem(item) {
         //dvd query
@@ -12,7 +20,7 @@ class ResultList extends React.Component {
                     let date = moment(json.results[0].release_dates[0].release_date).format('MMMM Do YYYY, h:mm:ss a');
                     document.getElementById("date").innerText = date;
                     console.log(json.results[0]);
-                   // this.setState({ json.result });
+                    this.setState({ clickedInformation: json.results[0] });
                 });
             });
         if (item.backdrop_path != null) {
@@ -21,7 +29,7 @@ class ResultList extends React.Component {
     }
 
     render() {
-
+        console.log(this.state.clickedInformation);
         
         //map: we are mapping each item in the array to a html list item '<li>' so when the '.map()' is done running
         //'allTheListItems' will be an array of <li>'s
