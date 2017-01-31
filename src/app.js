@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 //import our list
 import ResultList from './ResultList';
+import Logo from './static/logo.png'
 import Key from './Key';
 
 //Add in our components
@@ -10,7 +11,7 @@ class App extends React.Component {
         super(props) //not sure if need this 
         this.focus = this.focus.bind(this); //or this
         this.state = {
-            //initialize
+            //initialize (it is initialized to an empty array because things that depend on this.state.myList expect it to be an array)
             myList: []
         }
     }
