@@ -1,9 +1,9 @@
 module.exports = {
     devtool: 'source-map',
-    entry: './src/Search.js',
+    entry: './src/app.js',
     output: {
         path: __dirname,
-        filename: 'Search.js'
+        filename: 'app.js'
     },
     module: {
         loaders: [
