@@ -8,7 +8,7 @@ import Key from './Key';
 //Add in our components
 class App extends React.Component {
     constructor(props) {
-        super(props) //not sure if need this 
+        super(props)
         this.focus = this.focus.bind(this); //or this
         this.state = {
             //initialize (it is initialized to an empty array because things that depend on this.state.myList expect it to be an array)
@@ -57,7 +57,8 @@ class App extends React.Component {
                         onChange={this.searchResults.bind(this)} /> {/*query results onChange in input*/}
                 </div>
                 <img id="poster" />
-                <div id="date" />
+                <div id="date" /> 
+                <div id="description"> </div>
                 <div className="result-list"> <ResultList list={this.state.myList} /> </div>
             </div>
         )
