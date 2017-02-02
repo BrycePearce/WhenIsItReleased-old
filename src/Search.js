@@ -58,9 +58,7 @@ class Search extends React.Component {
                         onChange={this.searchResults.bind(this)} /> {/*query results onChange in input*/}
                 </div>
                 <img id="poster" />
-                <div id="date" /> 
-                <div id="description"> </div>
-                <div className="result-list"> <ResultList list={this.state.myList} /> </div>
+                 <ResultList className="result-list" list={this.state.myList} />
             </div>
         )
     }

@@ -8,6 +8,17 @@
   top: calc(50% - 800px / 2);
   left: calc(50% - 600px / 2);
 }
+
+.resultContainer {
+  position: absolute;
+  background:white;
+  opacity: 1.0; /*change opactiy when movie clicked?*/
+  box-shadow: 0 0 75px 25px rgba(0, 0, 0, .65);
+  width: 600px;
+ 
+  top: calc(50% - 800px / 2);
+  left: calc(50% - 600px / 2);
+}
 #movie-searchBox {
     display: flex;
     justify-content: center;
