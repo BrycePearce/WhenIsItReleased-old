@@ -1,5 +1,6 @@
 import React from 'react';
 import Key from './Key';
+import Search from './Search';
 import fillerImage from './static/notfound.png';
 
 class ResultList extends React.Component {
