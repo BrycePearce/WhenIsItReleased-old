@@ -70,3 +70,33 @@ body {
 .title {
   margin: auto;
 }
+
+.resultContainer {
+  position: absolute;
+  background:white;
+  opacity: 0.9; /*change opactiy when movie clicked?*/
+  box-shadow: 0 0 75px 25px rgba(0, 0, 0, .65);
+  width: 600px;
+ 
+  top: calc(50% - 200px / 2);
+  left: calc(50% - 600px / 2);
+}
+
+.resultPoster {
+    display: flex;
+    display:inline-block;
+    /*width: 100px;
+    height: 140px;*/
+    margin-left: 10px;
+}
+
+.date {
+    display: flex;
+    justify-content: center;
+}
+
+#overview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
