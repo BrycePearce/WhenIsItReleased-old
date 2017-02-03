@@ -6,7 +6,7 @@ import Key from './Key';
 import SearchBox from './SearchBox';
 import { Router, Route, Link } from 'react-router';
 
-//Add in our components
+//Add in our components 
 class Search extends React.Component {
     constructor(props) {
         super(props)
