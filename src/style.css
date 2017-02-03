@@ -8,7 +8,9 @@
   top: calc(50% - 800px / 2);
   left: calc(50% - 600px / 2);
 }
-#movie-searchBox {
+
+
+#landing-searchBox {
     display: flex;
     justify-content: center;
     align-items: flex-end;

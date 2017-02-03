@@ -1,15 +1,7 @@
 import React from 'react';
 import Key from './Key';
-import moment from 'moment';
+import Search from './Search';
 import fillerImage from './static/notfound.png';
-
-/*
-and you should probably be getting the specific movie details and using the append to response feature
-https://api.themoviedb.org/3/movie/277834?api_key=f016113c794da0ca4fc69f2cbeaca136&append_to_response=release_dates
-
-replace: this.setState({ clickedInformation: json.results[0] });
-
-*/
 
 class ResultList extends React.Component {
     constructor(props) {
@@ -26,12 +18,14 @@ class ResultList extends React.Component {
         fetch('http://api.themoviedb.org/3/movie/' + item.id + "?api_key=" + Key + '&append_to_response=release_dates')
             .then((response) => {
                 response.json().then((json) => {
-                    this.setState({ clickedInformation: json });
+                    this.context.router.push({
+                        pathname: 'details',
+                        state: {
+                            show: json
+                        }
+                    });
                 });
             });
-        if (item.backdrop_path != null) {
-            document.body.style.backgroundImage = "url('https://image.tmdb.org/t/p/w1920" + item.backdrop_path + "')";
-        } else { console.log("backdrop not found"); } //TODO: set this to default background later
     }
 
     render() {
@@ -49,12 +43,9 @@ class ResultList extends React.Component {
         if (this.state.clickedInformation) {
             console.log("movie has been selected");
             let date = moment(this.state.clickedInformation.release_date).format('MMMM Do YYYY, h:mm:ss a');
-            document.getElementById("date").innerText = date;
-            document.getElementById("description").innerHTML = this.state.clickedInformation.overview;
             return (
                 <h1>Hi there, Dvd release date goes here</h1>
-                
-                )
+            )
         } else {
             return (
                 <ul>
@@ -64,5 +55,10 @@ class ResultList extends React.Component {
         }
     }
 }
+
+//request the router context in your component
+ResultList.contextTypes = {
+    router: React.PropTypes.object
+};
 
 export default ResultList;
