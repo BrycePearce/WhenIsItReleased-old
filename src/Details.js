@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import Search from './Search'
+import Search from './Search';
+import Logo from './static/logo.png';
 import SearchBox from './SearchBox';
 
 class Details extends React.Component {
@@ -8,7 +9,7 @@ class Details extends React.Component {
     change() {
         this.props.onChange(this.textInput.value);
     }
-    
+
     render() {
         const apiPath = this.props.location.state.show;
         console.log(apiPath);
@@ -17,10 +18,11 @@ class Details extends React.Component {
         } else { console.log("backdrop not found"); } //TODO: set this to default background later
         return (
             <div className="resultContainer">
-                <SearchBox /> <Search/>
-                <div id="date">{moment(apiPath.release_dates.results[0].release_dates[0].release_date).format('MMMM Do YYYY, h:mm:ss a')}</div>
-                <div id="overview"> {apiPath.overview}</div>
-                <img className="resultPoster" src={"https://image.tmdb.org/t/p/w92/" + apiPath.poster_path} />
+              <div className="date">{moment(apiPath.release_dates.results[0].release_dates[0].release_date).format('MMMM Do YYYY, h:mm:ss a')}</div>
+                <div className="group">
+                  <img className="resultPoster" src={"https://image.tmdb.org/t/p/w92/" + apiPath.poster_path} />
+                  <div className="overview"> {apiPath.overview}</div>
+                </div>
             </div>
         )
     }

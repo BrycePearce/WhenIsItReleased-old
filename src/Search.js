@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import ResultList from './ResultList';
-import Logo from './static/logo.png';
 import Key from './Key';
 import SearchBox from './SearchBox';
 import { Router, Route, Link } from 'react-router';
