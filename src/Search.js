@@ -48,8 +48,8 @@ class Search extends React.Component {
     render() {
         return (
             <div id="container">
-                <h1>Pick a movie any movie</h1>
-                <div id="landing-searchBox">
+                <h1>When is it released</h1>
+                <div className="landing-searchBox">
                     <SearchBox onChange={this.searchResults.bind(this)} />
                 </div>
                 <img id="poster" />

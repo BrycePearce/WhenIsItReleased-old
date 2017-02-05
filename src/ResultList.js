@@ -19,7 +19,7 @@ class ResultList extends React.Component {
             .then((response) => {
                 response.json().then((json) => {
                     this.context.router.push({
-                        pathname: 'details',
+                        pathname: 'details/' + item.id,
                         state: {
                             show: json
                         }
@@ -39,20 +39,12 @@ class ResultList extends React.Component {
             return <li onClick={this.handleItem.bind(this, item)}><img className="posters" src={poster} /> <div className="title">{item.title} </div> </li>;
         });
 
-        //if clickedInformation is available
-        if (this.state.clickedInformation) {
-            console.log("movie has been selected");
-            let date = moment(this.state.clickedInformation.release_date).format('MMMM Do YYYY, h:mm:ss a');
-            return (
-                <h1>Hi there, Dvd release date goes here</h1>
-            )
-        } else {
             return (
                 <ul>
                     {allTheListItems}
                 </ul>
             )
-        }
+        
     }
 }
 
