@@ -1,4 +1,7 @@
 #ignore packages installed by npm
 node_modules/
+
+build/app*
+
 todo.txt
 Key.js
