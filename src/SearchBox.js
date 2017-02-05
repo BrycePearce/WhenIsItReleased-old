@@ -11,6 +11,7 @@ class SearchBox extends React.Component {
         return (
             <input
                 type="text"
+                className="inputText"
                 placeholder="Enter a movie"
                 ref={(input) => { this.textInput = input; } }
                 onChange={this.change.bind(this)} />

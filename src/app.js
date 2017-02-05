@@ -7,6 +7,8 @@ import { Router, Route, browserHistory } from 'react-router'
 render((
   <Router history={browserHistory}>
     <Route path="/" component={Search} />
-    <Route path="/Details" component={Details} />
+    <Route path="/details/:id" component={Details} />
+
   </Router>
+
 ), document.getElementById('app'))
