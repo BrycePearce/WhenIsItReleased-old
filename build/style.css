@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 #container {
   position: absolute;
@@ -9,7 +10,7 @@
 }
 
 * {
-  font-family: Roboto, Open Sans;
+  font-family: Roboto;
   font-size: 14px;
 }
 
@@ -123,7 +124,7 @@ body {
 
 .headerTextElements {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     flex-direction: column;
 }
 
@@ -146,8 +147,8 @@ body {
 }
 
 #logo {
-    height: auto; 
-    width: auto; 
+    height: auto;
+    width: auto;
     max-width: 60px;
     max-height: 60px;
 }

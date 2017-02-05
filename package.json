@@ -4,7 +4,10 @@
   "description": "Webapp that shows DVD release dates",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon express --ignore src/",
+    "build-watch": "webpack express",
+    "build": "webpack --color --watch"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,9 @@
   },
   "homepage": "https://github.com/BrycePearce/WhenIsItReleased.tv#readme",
   "dependencies": {
+    "express": "^4.14.1",
     "moment": "^2.17.1",
+    "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2"
