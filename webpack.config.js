@@ -1,8 +1,12 @@
+const path = require('path');
+
+const BUILD_DIR = path.resolve(__dirname, 'build/');
+
 module.exports = {
     devtool: 'source-map',
     entry: './src/app.js',
     output: {
-        path: __dirname,
+        path: BUILD_DIR,
         filename: 'app.js'
     },
     module: {
