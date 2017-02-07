@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon express --ignore src/",
-    "build-watch": "webpack express",
-    "build": "webpack --color --watch"
+    "start": "nodemon express --ignore src/ --ignore build/",
+    "build-watch": "webpack --color --watch",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
