@@ -19,13 +19,27 @@ class Details extends React.Component {
             document.body.style.backgroundImage = "url('https://image.tmdb.org/t/p/w1920" + this.props.location.state.show.backdrop_path + "')";
         } else { console.log("backdrop not found"); } //TODO: set this to default background later
 
-        if (releaseDate != undefined) {
-            //releaseDate = apiPath.release_dates.results[0].release_dates[0].release_date;
-            releaseDate = "Match Found";
+        if (releaseDate.results.length > 0) {
+            for (var i = 0; i < releaseDate.results.length; i += 1) {
+                if (releaseDate.results[i].iso_3166_1 == "US") {
+                    //now find the type: 4 digital, 5 physical
+                    for (var q = 0; q < releaseDate.results[i].release_dates.length; q += 1) {
+                        if (releaseDate.results[i].release_dates[q].type == "3" || releaseDate.results[i].release_dates[q].type == "4") {
+                            console.log("dvd release found");
+                            console.log(releaseDate.results[i].release_dates[q].release_date);
+                            console.log(apiPath);
+                            //releaseDate = releaseDate.results[i].release_dates[q].release_date;
+                        }
+                    }
+                }
+            }
+            //console.log(releaseDate.results[0].release_dates.length);
+            // releaseDate = moment(apiPath.release_dates.results[8].release_dates[1].release_date).format('MMMM Do YYYY');
         } else {
             releaseDate = "Date Unavailable";
         }
-        
+        //console.log(this.props.location.state.show.release_dates.results[8].release_dates[1].release_date);
+        //console.log(this.props.location.state.show.release_dates.results[8].release_dates[1].release_date);
         return (
             <div className="resultContainer">
                 <div className="detailsHeader">
