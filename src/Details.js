@@ -10,22 +10,43 @@ class Details extends React.Component {
         this.props.onChange(this.textInput.value);
     }
 
-
     render() {
-        let apiPath = this.props.location.state.show;
-        let releaseDate = apiPath.release_dates;
+        /*
+        //handle external requests
+        if (this.state.props == undefined) {
+            
+        }*/
+        const apiPath = this.props.location.state.show;
+        const releasePath = apiPath.release_dates;
+        let releaseDate = "";
+
 
         if (apiPath.backdrop_path != undefined) {
             document.body.style.backgroundImage = "url('https://image.tmdb.org/t/p/w1920" + this.props.location.state.show.backdrop_path + "')";
         } else { console.log("backdrop not found"); } //TODO: set this to default background later
-
-        if (releaseDate != undefined) {
-            //releaseDate = apiPath.release_dates.results[0].release_dates[0].release_date;
-            releaseDate = "Match Found";
+        //find the date for US release
+        if (releasePath.results.length > 0) {
+            for (var i = 0; i < releasePath.results.length; i += 1) {
+                if (releasePath.results[i].iso_3166_1 == "US") {
+                    //now find the type: 4 digital, 5 physical
+                    for (var q = 0; q < releasePath.results[i].release_dates.length; q += 1) {
+                        if (releasePath.results[i].release_dates[q].type == "4") {
+                            releaseDate = moment(releasePath.results[i].release_dates[q].release_date).format('MMMM Do YYYY');
+                        }
+                        else if (releasePath.results[i].release_dates[q].type == "5") {
+                            releaseDate = moment(releasePath.results[i].release_dates[q].release_date).format('MMMM Do YYYY');
+                        }
+                        else {
+                            releaseDate = "No US release date available";
+                        }
+                    }
+                    break;
+                }
+            }
         } else {
             releaseDate = "Date Unavailable";
         }
-        
+
         return (
             <div className="resultContainer">
                 <div className="detailsHeader">
