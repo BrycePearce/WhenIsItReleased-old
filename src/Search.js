@@ -23,7 +23,6 @@ class Search extends React.Component {
 
     //need to add query
     searchResults(typedCharacter) {
-        console.log({ typedCharacter });
         var input = typedCharacter;
         var empty = [];
         //don't query the first few characters (api limits to 40 characters per 10sec)
@@ -52,6 +51,7 @@ class Search extends React.Component {
                 <div className="landing-searchBox">
                     <SearchBox onChange={this.searchResults.bind(this)} />
                 </div>
+                <div className = "gitLink"><a href="https://github.com/BrycePearce/WhenIsItReleased">Github</a></div>
                 <img id="poster" />
                 <ResultList className="result-list" list={this.state.myList} />
             </div>

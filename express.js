@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 //set port
-app.set('port', process.env.PORT || 1337);
+app.set('port', process.env.PORT || 8080);
 
 //Sets root folder as src, used to import Static assets, such as scripts/images/etc. "/static" prevents clashes with other routes.
 app.use("/", express.static(path.resolve(__dirname, 'build/')));

@@ -7,23 +7,23 @@ import Key from './Key';
 
 class Details extends React.Component {
 
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      show: this.props.location.state ? this.props.location.state.show : null
-    };
+        this.state = {
+            show: this.props.location.state ? this.props.location.state.show : null
+        };
 
-    if (!this.state.show) {
-      fetch('http://api.themoviedb.org/3/movie/' + this.props.params.id + "?api_key=" + Key + '&append_to_response=release_dates')
-          .then((response) => {
-              response.json().then((json) => {
-                this.setState({show: json});
-              });
-          });
+        if (!this.state.show) {
+            fetch('http://api.themoviedb.org/3/movie/' + this.props.params.id + "?api_key=" + Key + '&append_to_response=release_dates')
+                .then((response) => {
+                    response.json().then((json) => {
+                        this.setState({ show: json });
+                    });
+                });
+        }
+
     }
-
-  }
 
     change() {
         this.props.onChange(this.textInput.value);
@@ -31,7 +31,7 @@ class Details extends React.Component {
 
     render() {
         if (!this.state.show) {
-          return <div>Loading...</div>
+            return <div>Loading...</div>
         }
 
         const apiPath = this.state.show;
@@ -53,6 +53,10 @@ class Details extends React.Component {
                         }
                         else if (releasePath.results[i].release_dates[q].type == "5") {
                             releaseDate = moment(releasePath.results[i].release_dates[q].release_date).format('MMMM Do YYYY');
+                        }
+                        else if (releasePath.results[i].release_dates[q].type == "3") {
+                            releaseDate = moment(releasePath.results[i].release_dates[q].release_date).format('MMMM Do YYYY') + " (Theatrical)";
+                            
                         }
                         else {
                             releaseDate = "No US release date available";
