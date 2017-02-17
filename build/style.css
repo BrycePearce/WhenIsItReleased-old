@@ -162,12 +162,12 @@ body {
     align-items: center
 }
 
-a {
+.returnText {
     display: flex;
     justify-content:flex-end;
     align-items:flex-end;
     color: #ff5900;
-    font-size: 15px;
+    font-size: 35px;
     text-decoration:  none;
 }
 ul {
@@ -179,4 +179,6 @@ ul {
     bottom:0;
     right:0;
     font-weight: bold;
+    text-decoration:  none;
+    color: #ff5900;
 }

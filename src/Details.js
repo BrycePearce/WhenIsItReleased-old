@@ -81,7 +81,7 @@ class Details extends React.Component {
                 </div>
                 <div className="footer">
                     <div className="logoSection"><img id="logo" src={Logo} /> <div className="logoText"> This product uses the TMDb API but is not endorsed or certified by TMDb. </div></div>
-                    <div className="returnSection"> <div className="returnText"><a href="/">Search Again</a></div> </div>
+                    <div className="returnSection"><a className="returnText" href="/">Search Again</a></div>
                 </div>
             </div>
         )
