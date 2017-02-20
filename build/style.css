@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 #container {
-  position: absolute;
-  background:#2e2e2e;
-  box-shadow: 0 0 75px 25px rgba(0, 0, 0, .65);
-  width: 600px;
-  top: calc(50% - 800px / 2);
-  left: calc(50% - 600px / 2);
+    position: absolute;
+    background: #2e2e2e;
+    box-shadow: 0 0 75px 25px rgba(0, 0, 0, .65);
+    width: 600px;
+    top: 15vh; /* Position the top of #container to be at 15% of the height of the window */
+    left: calc(50% - 600px / 2);
 }
 
 * {
