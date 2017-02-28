@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Search from './Search'
 import Details from './Details';
-import { Router, Route, browserHistory, Redirect } from 'react-router'
+import { Router, Route, browserHistory, Redirect } from 'react-router';
 
 render((
   <Router history={browserHistory}>

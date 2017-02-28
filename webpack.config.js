@@ -1,5 +1,4 @@
 const path = require('path');
-
 const BUILD_DIR = path.resolve(__dirname, 'build/');
 
 module.exports = {
@@ -7,7 +6,7 @@ module.exports = {
     entry: './src/app.js',
     output: {
         path: BUILD_DIR,
-        filename: 'app.js'
+        filename: 'bundle.js'
     },
     module: {
         loaders: [
@@ -15,7 +14,7 @@ module.exports = {
             {
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel',
+            loader: 'babel-loader',
             query: {
                 presets: ['es2015', 'react']
             }
